@@ -1,0 +1,31 @@
+// WHAT TO LEARN?
+
+- React Native (Expo CLI)
+- Tailwind CSS
+- Google Auth Firebase
+- Swipeable Tinder Cards
+- Matching Algorithm
+- 1-1 Messaging
+- React Native Navigation
+- UseContext API
+
+// TAILWIND
+Pour faire du css plus simplement --> mais induit d'apprendre une syntaxe particulière
+npm install tailwind-rn (voir doc)
+
+// REACT NAVIGATION
+Pour naviger entre différentes page de l'application
+
+- npm install @react-navigation/native
+- expo install react-native-screens react-native-safe-area-context --> pour projet expo
+- npm install @react-navigation/native-stack
+Voir la doc
+
+//CREATECONTEXT & USECONTEXT
+(voir doc)
+
+//EXPO-GOOGLE-APP-AUTH
+- npm i install expo-google-app-auth
+- import * as Google from 'expo-google-app-auth' --> dans fichier adéquat
+
+(voir doc)
