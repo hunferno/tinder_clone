@@ -24,6 +24,24 @@ Voir la doc
 //CREATECONTEXT & USECONTEXT
 (voir doc)
 
+//Firebase
+- créer un projet 
+- mettre en bundle ID : host.exp.exponent --> Pour IOS et android.
+- télécharger Google services-info (ios) et google-services.json(android) et les mettre a la racine du projet
+
+//EXPO CREDENTIALS
+- S'enregistrer sur expo.io
+- expo login -> apk -> new key //ligne de commande
+- expo fetch:android:hashes //ligne de commande
+- prendre google certificate Hash (SHA-256)
+- coller dans firebase -> android -> fingerprint
+- prendre google certificate Hash (SHA-1)
+- coller dans firebase -> android -> add other fingerprint
+- Aller dans le fichier GoogleServices-info et prendre le clientID dans Client et le coller dans la config Google (iosClientID:).
+- Aller dans le fichier Google-services.json et prendre le clientID dans Auth et le coller dans la config Google(androidClientId:).
+
+- créer une app web sur firebase et connecter la base de donnée et l'authentification.
+
 //EXPO-GOOGLE-APP-AUTH
 - npm i install expo-google-app-auth
 - import * as Google from 'expo-google-app-auth' --> dans fichier adéquat
