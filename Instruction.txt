@@ -47,3 +47,41 @@ Voir la doc
 - import * as Google from 'expo-google-app-auth' --> dans fichier adéquat
 
 (voir doc)
+
+
+//REACT NATIVE DECK SWIPER --> POUR LE MOUVEMENT DES CARDS
+(voir doc)
+- npm install react-native-deck-swiper --save
+
+    <Swiper
+          containerStyle={{ style }}
+          cards={data} // ARRAY OF OBJECT
+          stackSize={NumberYouWant} //GAP UNDER EACH CARD TO SEE OTHERS
+          cardIndex={0} //ALWAYS 0
+          animateCardOpacity
+          verticalSwipe={false} //IMPOSSIBLE TO SWIPE VERTICALLY
+          overlayLabels={{ //FOR TEXT WHEN MOVE CARD
+              left:{ //WHEN MOVING ON LEFT
+                  title : { 'NOPE' //TITLE OF THE TEXT
+                  style:{
+                      label:{
+                          textAlign:'right', //POSITION OF THE TEXT
+                          color:'red //COLOR OF THE TEXT
+                      }
+                  }
+                },
+              right:{ //WHEN MOVING ON RIGTH
+                  title : 'MATCH' //TITLE OF THE TEXT
+                  style:{
+                      label:{
+                          color:'red //COLOR OF THE TEXT
+                      }
+                  }
+                }
+          }}
+          onSwipedLeft={()=>{console.log("ce que l'on souhaite")}} //FUNCTION WHEN SWIPE LEFT
+          onSwipedRight={()=>{console.log("ce que l'on souhaite")}} //FUNCTION WHEN SWIPE RIGHT
+          renderCard={(card, index) => (RENDERING STUFF)}
+    />
+
+//MODAL PART FOR UPDATING USER DATA

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import useAuth from "../hooks/useAuth";
 
 const LoginScreen = () => {
