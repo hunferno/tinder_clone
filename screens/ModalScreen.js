@@ -30,10 +30,13 @@ const ModalScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, paddingTop: 25, alignItems: "center" }}>
       {/* MODAL HEADER */}
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity
+        style={{ width: "100%", height: 80 }}
+        onPress={() => navigation.navigate("Home")}
+      >
         <Image
           source={{ uri: "https://links.papareact.com/2pf" }}
-          style={{ height: 80, width: "100%" }}
+          style={{ height: "100%", width: "100%" }}
           resizeMode="contain"
         />
       </TouchableOpacity>
