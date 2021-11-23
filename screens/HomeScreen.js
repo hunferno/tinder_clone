@@ -11,10 +11,12 @@ import {
   getDocs,
   onSnapshot,
   query,
+  serverTimestamp,
   setDoc,
   where,
 } from "@firebase/firestore";
 import { db } from "../firebase";
+import generateId from "../lib/generateId";
 
 // Fake data
 
@@ -110,10 +112,48 @@ const HomeScreen = ({ navigation }) => {
     if (!profiles[cardIndex]) return;
 
     const userSwiped = profiles[cardIndex];
+    const loggedInProfile = await (await getDoc(db, "users", user.uid)).data();
 
-    console.log(`You swiped on ${userSwiped.displayName} (${userSwiped.job})`);
+    //check if the user swiped on you...
+    getDoc(doc(db, "users", userSwiped.id, user.uid)).then(
+      (documentSnapshot) => {
+        if (documentSnapshot.exists()) {
+          // user has matched with you before you matched with them...
+          //Create a MATCH
+          console.log(`Hooray, You MATCHED with ${userSwiped.displayName}`);
 
-    setDoc(doc(db, "users", user.uid, "swipes", userSwiped.id), userSwiped);
+          setDoc(
+            doc(db, "users", user.uid, "swipes", userSwiped.id),
+            userSwiped
+          );
+
+          //CREATE A MATCH
+          getDoc(doc(db, "matches", generateId(user.uid, userSwiped.id)), {
+            users: {
+              [user.uid]: loggedInProfile,
+              [userSwiped.id]: userSwiped,
+            },
+            usesMatched: [user.uid, userSwiped.id],
+            timestamp: serverTimestamp(),
+          });
+
+          navigation.navigate("Match", {
+            loggedInProfile,
+            userSwiped,
+          });
+        } else {
+          // user has swiped at first interaction between the two or didn't get swiped on...
+          console.log(
+            `You swiped on ${userSwiped.displayName} (${userSwiped.job})`
+          );
+
+          setDoc(
+            doc(db, "users", user.uid, "swipes", userSwiped.id),
+            userSwiped
+          );
+        }
+      }
+    );
 
     // const loogedInProfile = await (
     //   await getDoc(doc(db, "uses", user.uid))
